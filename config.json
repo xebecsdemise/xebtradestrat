@@ -1,8 +1,7 @@
-
 {
-    "max_open_trades": 5,
+    "max_open_trades": 25,
     "stake_currency": "USDT",
-    "stake_amount": 10,
+    "stake_amount": 2,
     "tradable_balance_ratio": 0.99,
     "fiat_display_currency": "USD",
     "timeframe": "1m",
@@ -10,13 +9,12 @@
     "cancel_open_orders_on_exit": false,
     "unfilledtimeout": {
         "buy": 10,
-        "sell": 30,
-        "unit": "minutes"
+        "sell": 30
     },
     "bid_strategy": {
         "price_side": "bid",
         "ask_last_balance": 0.0,
-        "use_order_book": true,
+        "use_order_book": false,
         "order_book_top": 1,
         "check_depth_of_market": {
             "enabled": false,
@@ -25,9 +23,13 @@
     },
     "ask_strategy": {
         "price_side": "ask",
-        "use_order_book": true,
-        "order_book_top": 1
+        "use_order_book": false,
+        "order_book_min": 1,
+        "order_book_max": 1,
+        "use_sell_signal": true,
+        "ignore_roi_if_buy_signal": true
     },
+    "download_trades": true,
     "exchange": {
         "name": "binance",
         "key": "",
@@ -38,28 +40,38 @@
             "rateLimit": 200
         },
         "pair_whitelist": [
+          "BTC/USDT",
+          "ETH/USDT",
+          "ETC/USDT",
+          "LTC/USDT",
+          "XLM/USDT",
+          "ADA/USDT"
         ],
         "pair_blacklist": [
-            "BNB/.*"
+          "BNB/.*"
         ]
     },
     "pairlists": [
-        {
-            "method": "VolumePairList",
-            "number_assets": 20,
-            "sort_key": "quoteVolume",
-            "min_value": 0,
-            "refresh_period": 1800
-        }
-    ],
+      {
+          "method": "VolumePairList",
+          "number_assets": 50,
+          "sort_key": "quoteVolume",
+          "refresh_period": 1800
+      },
+      {"method": "AgeFilter", "min_days_listed": 10},
+      {
+        "method": "RangeStabilityFilter",
+        "lookback_days": 5,
+        "min_rate_of_change": 0.01,
+        "refresh_period": 1440
+      }
+     ],
+
     "edge": {
         "enabled": false,
         "process_throttle_secs": 3600,
         "calculate_since_number_of_days": 7,
         "allowed_risk": 0.01,
-        "stoploss_range_min": -0.01,
-        "stoploss_range_max": -0.1,
-        "stoploss_range_step": -0.01,
         "minimum_winrate": 0.60,
         "minimum_expectancy": 0.20,
         "min_trade_number": 10,
@@ -73,16 +85,15 @@
     },
     "api_server": {
         "enabled": true,
+        "enable_openapi": true,
         "listen_ip_address": "0.0.0.0",
         "listen_port": 8080,
-        "verbosity": "error",
-        "enable_openapi": false,
+        "verbosity": "info",
         "jwt_secret_key": "5ed88eed193b39c17778ba595abf21c1285496049699f031bd93a2639ae043bb",
         "CORS_origins": [],
-        "username": "freqtrader",
+        "username": "xebec ",
         "password": "xanthia"
     },
-    "bot_name": "freqtrade",
     "initial_state": "running",
     "forcebuy_enable": false,
     "internals": {
