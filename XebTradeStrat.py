@@ -15,7 +15,7 @@ import talib.abstract as ta
 import freqtrade.vendor.qtpylib.indicators as qtpylib
 
 
-# This class is a sample. Feel free to customize it.
+# This class is a sample. Feel free to customize it. xeb
 class XebTradeStrat(IStrategy):
     """
     This is a sample strategy to inspire you.
