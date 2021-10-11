@@ -33,24 +33,27 @@ class XebTradeStrat(IStrategy):
 
 
     def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
-        mid, lower = bollinger_bands(dataframe['close'], window_size=40, num_of_std=2)
-        dataframe['mid'] = np.nan_to_num(mid)
-        dataframe['lower'] = np.nan_to_num(lower)
-        dataframe['bbdelta'] = (dataframe['mid'] - dataframe['lower']).abs()
-        dataframe['pricedelta'] = (dataframe['open'] - dataframe['close']).abs()
-        dataframe['closedelta'] = (dataframe['close'] - dataframe['close'].shift()).abs()
-        dataframe['tail'] = (dataframe['close'] - dataframe['low']).abs()
+        # mid, lower = bollinger_bands(dataframe['close'], window_size=40, num_of_std=2)
+        # dataframe['mid'] = np.nan_to_num(mid)
+        # dataframe['lower'] = np.nan_to_num(lower)
+        # dataframe['bbdelta'] = (dataframe['mid'] - dataframe['lower']).abs()
+        # dataframe['pricedelta'] = (dataframe['open'] - dataframe['close']).abs()
+        # dataframe['closedelta'] = (dataframe['close'] - dataframe['close'].shift()).abs()
+        # dataframe['tail'] = (dataframe['close'] - dataframe['low']).abs()
+        dataframe['ema5'] = ta.EMA(dataframe, timeperiod=5)
+        dataframe['ema5'] = ta.EMA(dataframe, timeperiod=10)
+        dataframe['ema5'] = ta.EMA(dataframe, timeperiod=30)
         return dataframe
 
     def populate_buy_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         dataframe.loc[
             (
-                dataframe['lower'].shift().gt(0) &
-                dataframe['bbdelta'].gt(dataframe['close'] * 0.008) &
-                dataframe['closedelta'].gt(dataframe['close'] * 0.0175) &
-                dataframe['tail'].lt(dataframe['bbdelta'] * 0.25) &
-                dataframe['close'].lt(dataframe['lower'].shift()) &
-                dataframe['close'].le(dataframe['close'].shift())
+                # dataframe['lower'].shift().gt(0) &
+                # dataframe['bbdelta'].gt(dataframe['close'] * 0.008) &
+                # dataframe['closedelta'].gt(dataframe['close'] * 0.0175) &
+                # dataframe['tail'].lt(dataframe['bbdelta'] * 0.25) &
+                # dataframe['close'].lt(dataframe['lower'].shift()) &
+                # dataframe['close'].le(dataframe['close'].shift())
             ),
             'buy'] = 1
         return dataframe
