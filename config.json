@@ -1,16 +1,16 @@
 {
     "max_open_trades": 20,
     "stake_currency": "USDT",
-    "stake_amount": 1,
-    "dry_run_wallet": 20,
+    "stake_amount": 10,
+    "dry_run_wallet": 100,
     "tradable_balance_ratio": 0.99,
     "fiat_display_currency": "USD",
     "timeframe": "1m",
     "dry_run": true,
     "cancel_open_orders_on_exit": false,
     "unfilledtimeout": {
-        "buy": 10,
-        "sell": 30
+        "buy": 1,
+        "sell": 2
     },
     "bid_strategy": {
         "price_side": "bid",
