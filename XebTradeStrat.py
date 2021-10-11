@@ -28,8 +28,8 @@ class XebTradeStrat(IStrategy):
     timeframe = '1m'
     trailing_stop = True
     trailing_only_offset_is_reached = True
-    trailing_stop_positive_offset = 0.00375  # Trigger positive stoploss once crosses above this percentage
-    trailing_stop_positive = 0.00175 # Sell asset if it dips down this much
+    trailing_stop_positive_offset = 0.001  # Trigger positive stoploss once crosses above this percentage
+    trailing_stop_positive = 0.001 # Sell asset if it dips down this much
 
 
     def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
