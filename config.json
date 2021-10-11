@@ -22,10 +22,6 @@
             "bids_to_ask_delta": 1
         }
     },
-    "order_types": {
-        "buy": "market",
-        "sell": "market"
-    },
     "ask_strategy": {
         "price_side": "ask",
         "use_order_book": false,
