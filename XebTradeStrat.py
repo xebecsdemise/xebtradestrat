@@ -41,8 +41,8 @@ class XebTradeStrat(IStrategy):
         # dataframe['closedelta'] = (dataframe['close'] - dataframe['close'].shift()).abs()
         # dataframe['tail'] = (dataframe['close'] - dataframe['low']).abs()
         dataframe['ema5'] = ta.EMA(dataframe, timeperiod=5)
-        dataframe['ema5'] = ta.EMA(dataframe, timeperiod=10)
-        dataframe['ema5'] = ta.EMA(dataframe, timeperiod=30)
+        dataframe['ema10'] = ta.EMA(dataframe, timeperiod=10)
+        dataframe['ema30'] = ta.EMA(dataframe, timeperiod=30)
         return dataframe
 
     def populate_buy_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
