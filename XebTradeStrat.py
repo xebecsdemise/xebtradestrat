@@ -41,7 +41,7 @@ class XebTradeStrat(IStrategy):
         dataframe.loc[
             (
                 (dataframe['ema5'] >= dataframe['ema10'])&
-                (dataframe['ema5'] < dataframe['ema10'].shift(1)) &
+                (dataframe['ema5'] < dataframe['ema10'].shift(1))
             ),
             'buy'] = 1
         return dataframe
