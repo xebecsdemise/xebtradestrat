@@ -40,8 +40,9 @@ class XebTradeStrat(IStrategy):
     def populate_buy_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         dataframe.loc[
             (
-                (dataframe['ema5'] >= dataframe['ema10'])&
-                (dataframe['ema5'] < dataframe['ema10'].shift(1))
+                (dataframe['ema5'] > dataframe['ema10'])&
+                (dataframe['ema5'] .shift(1) < dataframe['ema10'].shift(1)&
+                (dataframe['volume'] > 0)
             ),
             'buy'] = 1
         return dataframe
