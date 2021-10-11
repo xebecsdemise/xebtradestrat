@@ -28,7 +28,7 @@ class XebTradeStrat(IStrategy):
     timeframe = '1m'
     trailing_stop = True
     trailing_only_offset_is_reached = True
-    trailing_stop_positive_offset = 0.001  # Trigger positive stoploss once crosses above this percentage
+    trailing_stop_positive_offset = 0.0015  # Trigger positive stoploss once crosses above this percentage
     trailing_stop_positive = 0.001 # Sell asset if it dips down this much
 
 
