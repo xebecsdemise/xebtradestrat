@@ -24,7 +24,7 @@ class XebTradeStrat(IStrategy):
       "0": 0.99
     }
 
-    stoploss = -0.05
+    stoploss = -0.02
     timeframe = '1m'
     trailing_stop = True
     trailing_only_offset_is_reached = True
