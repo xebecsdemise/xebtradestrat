@@ -21,8 +21,8 @@ def bollinger_bands(stock_price, window_size, num_of_std):
 class XebTradeStrat(IStrategy):
     minimal_roi = {
     #    "0": 0.0125
-      "4": 0.002
-      "2": 0.005 
+      "4": 0.002,
+      "2": 0.005,
       "0": 0.01
     }
 
